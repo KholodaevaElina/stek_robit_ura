@@ -127,6 +127,10 @@ int main () {
 			push (atoi (number_to_push), &index_of_top, stek);
 		}	
         }
+	
+	free (stek);
+        free (command_list);
+        free (p_lines);
 }
 
 /*
@@ -218,7 +222,7 @@ void pop (double* stek, int* p_index_of_top) {
 	stek[*p_index_of_top] = 0.0; 
 	*p_index_of_top--;
 
-	printf ("top element = %lg\n", top_element);
+	printf ("Top element = %lg\n", top_element);
 }
 
 /*
