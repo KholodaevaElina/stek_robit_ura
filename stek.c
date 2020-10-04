@@ -55,52 +55,46 @@ int main () {
         int index_of_top = THERE_IS_NOTHING_IN_THE_STACK;
         
 	for (int i = 0; i < number_of_lines; i++) {
-	int pointer_shift = 0;
-	char command [MAX_LENGTH_COMMAND] = {};
+        	int pointer_shift = 0;
+        	char command [MAX_LENGTH_COMMAND] = {};
 
 		while (isalpha(*(p_lines[i] + pointer_shift))) {
 				command[pointer_shift] = *(p_lines[i] + pointer_shift);
 				pointer_shift++;
 		}
 
-        	int is_push = 1;
-	        if (command[0] != 'P' || command[0] != 'p')
-	                is_push = 0;
-        	if (command[1] != 'U' || command[1] != 'u')
-                        is_push = 0;
-         	if (command[2] != 'S' || command[2] != 's')
-                        is_push = 0;
-                if (command[4] != 'H' || command[4] != 'h')
-                        is_push = 0;
-
-		printf ("%s\n", command);
+        	int is_push = 0;
+	        if (command[0] == 'P' || command[0] == 'p')
+        	if (command[1] == 'U' || command[1] == 'u')
+         	if (command[2] == 'S' || command[2] == 's')
+                if (command[3] == 'H' || command[3] == 'h')
+                        is_push = 1;
 
              	if (is_push == 0) {
 	                if (command[0] == 'P' || command[0] == 'p')
 		        if (command[1] == 'O' || command[1] == 'o')
 	        	if (command[2] == 'P' || command[2] == 'p') 
 		        	pop (stek, &index_of_top);
-        	} else
+        	} 
 	       	if (is_push == 0) {
                         if (command[0] == 'A' || command[0] == 'a')
                         if (command[1] == 'D' || command[1] == 'd')
                         if (command[2] == 'D' || command[2] == 'd') 
                                 printf ("The sum of the two outermost elements of the stack is %lg\n", add (stek, index_of_top));	
 			
-                } else
+                } 
 		if (is_push == 0) {
                         if (command[0] == 'S' || command[0] == 's')
                         if (command[1] == 'U' || command[1] == 'u')
                         if (command[2] == 'B' || command[2] == 'b') 
                                 printf ("The difference between the two extreme elements of the stack is %lg\n", sub (stek, index_of_top));
-                } else
+                } 
 		if (is_push == 0) {
                         if (command[0] == 'M' || command[0] == 'm')
                         if (command[1] == 'U' || command[1] == 'u')
-                        if (command[2] == 'L' || command[2] == 'l') {
+                        if (command[2] == 'L' || command[2] == 'l') 
                                 printf ("The product of the two outermost elements of the stack is %lg\n", mul (stek, index_of_top));
-			}
-                } else 
+                }  
 		if (is_push == 0) {
                         if (command[0] == 'D' || command[0] == 'd')
                         if (command[1] == 'I' || command[1] == 'i')
@@ -116,8 +110,6 @@ int main () {
 		
 
 	        if (is_push == 1) {
-
-			printf ("PPPOPP");
 
 			while (*(p_lines[i] + pointer_shift) > '9' || *(p_lines[i] + pointer_shift) < '0')
 				pointer_shift++;
@@ -252,13 +244,11 @@ void memset_0__for_double (double* arr, int size_arr) {
  * @param[in] stek (type: double*, stack pointer)
  * */
 void push (double number, int* p_index_of_top, double* stek) {
-        assert (*p_index_of_top != THERE_IS_NOTHING_IN_THE_STACK);
 	assert (p_index_of_top != NULL);
 	assert (stek != NULL);
 
         stek[*p_index_of_top + 1] = number;
-        double temp = *p_index_of_top;
-	*p_index_of_top = temp + 1;
+        (*p_index_of_top)++; 
 }
 
 
